@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
                         await SharedPreferences.getInstance();
                     mypref.setString('Name', 'Salma');
                     mypref.setDouble('Age', 23);
-                    mypref.setStringList('Hoppies', ['Swimming', 'Dancing']);
+                    mypref.setStringList('Hobbies', ['Swimming', 'Dancing']);
                   },
                   child: Text("Save in Shared Preference")),
               ElevatedButton(
@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
                         await SharedPreferences.getInstance();
                     String? name = mypref.getString('Name');
                     double? age = mypref.getDouble('Age');
-                    List<String>? hobbies = mypref.getStringList('Hoppies');
+                    List<String>? hobbies = mypref.getStringList('Hobbies');
                     print(name);
                     print(age);
                     print(hobbies);
@@ -49,9 +49,23 @@ class _MyAppState extends State<MyApp> {
                   onPressed: () async {
                     SharedPreferences mypref =
                         await SharedPreferences.getInstance();
-                    mypref.remove('Hoppies');
+                    mypref.setString('Name', 'Amal');
                   },
-                  child: Text("Delete the Data in Shared Preference"))
+                  child: Text("Update the Name key in shared preference")),
+              ElevatedButton(
+                  onPressed: () async {
+                    SharedPreferences mypref =
+                        await SharedPreferences.getInstance();
+                    mypref.clear();
+                  },
+                  child: Text("Reset the whole Data")),
+              ElevatedButton(
+                  onPressed: () async {
+                    SharedPreferences mypref =
+                        await SharedPreferences.getInstance();
+                    mypref.remove('Hobbies');
+                  },
+                  child: Text("Deleting the Hobbies"))
             ],
           ),
         ),
